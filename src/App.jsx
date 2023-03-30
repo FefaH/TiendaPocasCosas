@@ -41,7 +41,7 @@ const dataProduct = [
 ]
 
 function App() {
-  const [productData, setProductData] = useState('')
+  const [productData, setProductData] = useState()
   const [nameProduct, setNameProduct] = useState('')
 
   const appProduct = (appProducto) => {

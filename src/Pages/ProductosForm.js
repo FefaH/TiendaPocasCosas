@@ -1,6 +1,6 @@
 import { Box, Button, FormGroup, Modal, Table, TextField } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid/Grid";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const ProductosForm = (dataProductos) => {
 
@@ -8,12 +8,10 @@ const ProductosForm = (dataProductos) => {
 
   const [productList, setProductList] = useState([dataProductos.dataProductos])
   console.log('productList: ', productList)
-  console.log('dataProductos: ', dataProductos)
-
-  const { unidades } = productList
 
   const handleRemove = (id) => {
-    const newArray = productList.filter(product => product.unidades !== id)
+    const newArray = productList.filter(product => console.log('product: ', product))
+    console.log('productList: ', productList)
     setProductList(newArray)
   }
 
@@ -31,7 +29,8 @@ const ProductosForm = (dataProductos) => {
           </tr>
         </thead>
         <tbody>
-          {
+
+          { dataProductos.dataProductos &&
             dataProductos.dataProductos.map((element) => (
               <tr>
                 <th>{element.unidades}</th>
@@ -42,12 +41,10 @@ const ProductosForm = (dataProductos) => {
                   <Button color="primary">
                     Editar
                   </Button>
-                  <Button onClick={() => handleRemove(unidades)}>Eliminar</Button>
+                  <Button onClick={() => handleRemove(element.unidades)}>Eliminar</Button>
                 </th>
               </tr>
             ))
-
-
           }
 
           {/*data.map((element) => (
